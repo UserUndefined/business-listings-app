@@ -19,6 +19,7 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
+    <side-nav-bar></side-nav-bar>
     <nav>
       <a [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
@@ -43,6 +44,10 @@ import { AppState } from './app.service';
       <a [routerLink]=" ['./customer'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Customer
+      </a>
+      <a [routerLink]=" ['./dashboard'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Dashboard
       </a>
     </nav>
 

@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 import { MdCoreModule } from '@angular2-material/core';
 import { MdButtonModule } from '@angular2-material/button';
 import { MdCardModule } from '@angular2-material/card';
+import { MdSidenavModule } from '@angular2-material/sidenav';
+import { MdToolbarModule } from '@angular2-material/toolbar';
 // import { MdRadioModule } from '@angular2-material/radio';
 // import { MdCheckboxModule } from '@angular2-material/checkbox'
 // import { MdTooltipModule } from '@angular2-material/tooltip';
@@ -38,8 +40,10 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { CustomerComponent } from './customer';
+import { DashboardComponent } from './dashboard';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
+import { SideNavBarComponent } from './sideNavBar';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -65,9 +69,11 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     CustomerComponent,
+    DashboardComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    SideNavBarComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -77,11 +83,14 @@ type StoreType = {
     MdCoreModule.forRoot(),
     MdCardModule.forRoot(),
     MdButtonModule.forRoot(),
+    MdSidenavModule.forRoot(),
+    MdToolbarModule.forRoot(),
     // MdRadioModule,
     // MdCheckboxModule,
     // MdTooltipModule,
     // MdSliderModule
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules
+    })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

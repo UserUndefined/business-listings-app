@@ -1,29 +1,31 @@
-<div (window:resize)="onResize($event)"></div>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <a id="menu-toggle" href="#" class="navbar-toggle" (click)="menuToggle()">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="navbar-brand" href="home.xhtml">
-        logo
-      </a>
-    </div>
-    <div id="sidebar-wrapper" class="sidebar-toggle" [style.margin-left]="navbarToggleLeft + 'px'">
-      <ul class="sidebar-nav">
-        <li>
-          <a href="#item1">Item 1</a>
-        </li>
-        <li>
-          <a href="#item2">Item 2</a>
-        </li>
-        <li>
-          <a href="#item3">Item 3</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<md-sidenav #start (open)="closeSideNavStartButton.focus()">
+  Side nav bar
+  <br>
+  <button md-button #closeSideNavStartButton (click)="start.close()" color="primary">Close</button>
+</md-sidenav>
+
+
+
+<!--md-toolbar color="primary">
+  <button class="app-icon-button" (click)="start.toggle()">
+    <i class="material-icons app-toolbar-menu">menu</i>
+  </button>
+
+  Angular Material2 Example App
+
+  <span class="app-toolbar-filler"></span>
+  <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+
+  <md-toolbar-row>
+    <span>Toolbar Row 1</span>
+  </md-toolbar-row>
+
+  <md-toolbar-row>
+    <span>Toolbar Row 2</span>
+  </md-toolbar-row>
+
+  <md-toolbar-row>
+    <span>Toolbar Row 3</span>
+  </md-toolbar-row>
+
+</md-toolbar-->

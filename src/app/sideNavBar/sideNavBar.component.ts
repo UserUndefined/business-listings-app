@@ -1,6 +1,4 @@
-import {Component, ViewChild, ViewEncapsulation, Input, Output, ElementRef, EventEmitter} from '@angular/core';
-
-import './sideNavBar.loader.ts';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
   selector: 'side-nav-bar',
@@ -8,23 +6,23 @@ import './sideNavBar.loader.ts';
   encapsulation: ViewEncapsulation.Native,
   styleUrls: [ './sideNavBar.style.css' ]
 })
-export class SideNavBar {
+export class SideNavBarComponent implements OnInit  {
 
-  sidebarToggleLeft = "200px";
+  private sidebarToggleLeft = '200px';
 
-  ngAfterViewInit() {
-
+  public ngOnInit() {
+    console.log('hello from SideNavBarComponent component');
   }
 
-  onResize(event){
-    if(event.target.innerWidth >= 751){
-      this.sidebarToggleLeft = "200px";
-    }else{
-      this.sidebarToggleLeft = "-200px";
+  public onResize(event) {
+    if (event.target.innerWidth >= 751) {
+      this.sidebarToggleLeft = '200px';
+    } else {
+      this.sidebarToggleLeft = '-200px';
     }
   }
 
-  menuToggle(event){
+  public menuToggle(event) {
     console.log('toggle menu');
   }
 }
