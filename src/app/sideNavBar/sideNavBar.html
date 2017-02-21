@@ -1,31 +1,91 @@
-<md-sidenav #start (open)="closeSideNavStartButton.focus()">
-  Side nav bar
-  <br>
-  <button md-button #closeSideNavStartButton (click)="start.close()" color="primary">Close</button>
-</md-sidenav>
+<!--md-sidenav-layout>
+  <div class="ngh-app-bar">
+    <button class="ngh-sidenav-toggle" #toggle (click)="left.open()">
+      Menu
+    </button>
+    <span class="ngh-title">Angular 2 Hearthstone</span>
+  </div>
+  <md-sidenav class="ngh-sidenav-left" #left>
+    <div>
+      <img src="/assets/img/angular-logo.png" alt="Background"/>
+    </div>
+    <ul>
+      <li><a [routerLink]="['/cards', 'heroes', 'list']" routerLinkActive="active"  md-button><span>Heroes</span></a></li>
+      <li><a [routerLink]="['/cards/sets']" routerLinkActive="active"  md-button><span>Card Sets</span></a></li>
+      <li><a [routerLink]="['/cards/search']" routerLinkActive="active"  md-button><span>Search</span></a></li>
+    </ul>
+  </md-sidenav>
+</md-sidenav-layout-->
 
+<!--md-sidenav-container class="demo-sidenav-container">
+  <md-sidenav #start (open)="myinput.focus()" mode="side">
+    Start Side Drawer
+    <br>
+    <button md-button (click)="start.close()">Close</button>
+    <br>
+    <button md-button (click)="end.open()">Open End Side</button>
+    <br>
+    <button md-button
+            (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
+    <div>Mode: {{start.mode}}</div>
+    <br>
+    <input #myinput>
+  </md-sidenav>
 
+  <md-sidenav #end align="end">
+    End Side Drawer
+    <br>
+    <button md-button (click)="end.close()">Close</button>
+  </md-sidenav>
 
-<!--md-toolbar color="primary">
-  <button class="app-icon-button" (click)="start.toggle()">
-    <i class="material-icons app-toolbar-menu">menu</i>
-  </button>
+  <div class="demo-sidenav-content">
+    <h1>My Content</h1>
 
-  Angular Material2 Example App
+    <div>
+      <header>Sidenav</header>
+      <button md-button (click)="start.toggle()">Toggle Start Side Drawer</button>
+      <button md-button (click)="end.toggle()">Toggle End Side Drawer</button>
+    </div>
 
-  <span class="app-toolbar-filler"></span>
-  <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+    <button md-button>HELLO</button>
+    <button md-raised-button class="mat-primary">HELLO</button>
+    <button md-fab class="mat-accent">HI</button>
+  </div>
+</md-sidenav-container>
 
-  <md-toolbar-row>
-    <span>Toolbar Row 1</span>
-  </md-toolbar-row>
+<h2>Sidenav Already Opened</h2>
 
-  <md-toolbar-row>
-    <span>Toolbar Row 2</span>
-  </md-toolbar-row>
+<md-sidenav-container class="demo-sidenav-container">
+  <md-sidenav #start2 opened mode="side">
+    Drawer
+  </md-sidenav>
 
-  <md-toolbar-row>
-    <span>Toolbar Row 3</span>
-  </md-toolbar-row>
+  <div class="demo-sidenav-content">
+    <button md-button (click)="start2.toggle()">Toggle Start Side Drawer</button>
+  </div>
+</md-sidenav-container>
 
-</md-toolbar-->
+<h2>Dynamic Alignment Sidenav</h2>
+
+<md-sidenav-container class="demo-sidenav-container">
+  <md-sidenav #dynamicAlignSidenav mode="push" [align]="side">Drawer</md-sidenav>
+
+  <div class="demo-sidenav-content">
+    <button (click)="dynamicAlignSidenav.toggle()">Toggle sidenav</button>
+    <button (click)="side = (side == 'start') ? 'end' : 'start'">Change sides</button>
+  </div>
+</md-sidenav-container-->
+  <md-sidenav #sidenav class="example-sidenav">
+    Jolly good!
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.open()">
+      <md-icon class="md-24" >menu</md-icon>
+      Menu
+    </button>
+    <div class="demo-toolbar">
+      <h1>Business Listing Application</h1>
+    </div>
+  </md-toolbar>
+

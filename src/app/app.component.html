@@ -1,0 +1,86 @@
+<md-sidenav-layout class="example-container mat-app-background">
+
+  <md-sidenav #sidenav class="example-sidenav">
+    <md-nav-list>
+      <a [routerLink]=" ['./'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Index
+      </a>
+      <a [routerLink]=" ['./home'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Home
+      </a>
+      <a [routerLink]=" ['./detail'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Detail
+      </a>
+      <a [routerLink]=" ['./barrel'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Barrel
+      </a>
+      <a [routerLink]=" ['./about'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        About
+      </a>
+      <a [routerLink]=" ['./customer'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Customer
+      </a>
+      <a [routerLink]=" ['./dashboard'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Dashboard
+      </a>
+    </md-nav-list>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.open()">
+      <md-icon class="md-24" >menu</md-icon>
+    </button>
+    <div class="demo-toolbar">
+      <h1>Business Listing Application</h1>
+    </div>
+  </md-toolbar>
+
+  <nav>
+    <a [routerLink]=" ['./'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Index
+    </a>
+    <a [routerLink]=" ['./home'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Home
+    </a>
+    <a [routerLink]=" ['./detail'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Detail
+    </a>
+    <a [routerLink]=" ['./barrel'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Barrel
+    </a>
+    <a [routerLink]=" ['./about'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      About
+    </a>
+    <a [routerLink]=" ['./customer'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Customer
+    </a>
+    <a [routerLink]=" ['./dashboard'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Dashboard
+    </a>
+  </nav>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+
+  <footer>
+    <span>Business Listing Application - WORK IN PROGRESS</span>
+  </footer>
+
+</md-sidenav-layout>

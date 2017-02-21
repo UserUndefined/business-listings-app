@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
+// import * as $ from 'jquery';
 
 @Component({
   selector: 'side-nav-bar',
@@ -12,6 +13,7 @@ export class SideNavBarComponent implements OnInit  {
 
   public ngOnInit() {
     console.log('hello from SideNavBarComponent component');
+    // $(".button-collapse").sideNav();
   }
 
   public onResize(event) {

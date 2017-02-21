@@ -1,45 +1,63 @@
-#sidebar-wrapper {
-  top: 52px;
-  left: -200px;
-  width: 200px;
-  background-color: #5677fc;
-  color: white;
-  position: fixed;
+/*
+.ngh-app-bar {
+  width: 100%;
+  height: 50px;
+  background-color: #673ab7;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.ngh-viewport, md-sidenav-layout {
   height: 100%;
-  z-index: 1;
 }
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  margin: 0;
-  padding: 0;
+
+.ngh-sidenav-toggle {
+  width: 50px;
+  height: 50px;
+}
+
+md-sidenav.ngh-sidenav-left {
   width: 250px;
-  list-style: none;
 }
-.sidebar-nav li {
-  text-indent: 20px;
+
+button.ngh-sidenav-toggle {
+  border: none;
+  background-color: #673ab7;
+  outline: none;
+  color: white;
+}
+
+button.ngh-sidenav-toggle:hover {
+  background-color: #7e57c2;
+}
+
+.ngh-app-bar .ngh-title {
+  font-family: "Segoe UI", Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
   line-height: 50px;
+  vertical-align: top;
 }
-.sidebar-nav li a {
-  color: white;
+
+md-sidenav ul {
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+md-sidenav ul li a {
   display: block;
-  text-decoration: none;
+  text-align: left;
+  font-weight: 600;
+  height: 3em;
+  border-radius: 0;
+  padding: 0.25em 0.5em;
 }
-.sidebar-nav li a:hover {
-  background: rgba(255,255,255,0.25);
-  color: white;
-  text-decoration: none;
+
+md-sidenav ul li a[md-button].active {
+  color: #673ab7;
 }
-.sidebar-nav li a:active, .sidebar-nav li a:focus {
-  text-decoration: none;
+
+md-sidenav ul li a[md-button] span {
+  vertical-align: top;
+  margin-left: 1em;
 }
-#sidebar-wrapper.sidebar-toggle {
-  transition: all 0.3s ease-out;
-  margin-left: -200px;
-}
-@media (min-width: 768px) {
-  #sidebar-wrapper.sidebar-toggle {
-    transition: 0s;
-    left: 200px;
-  }
-}
+ */

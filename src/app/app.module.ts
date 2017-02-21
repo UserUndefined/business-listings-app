@@ -4,15 +4,24 @@ import { HttpModule } from '@angular/http';
 
 // Material 2
 // import { MaterialModule } from '@angular/material';
-import { MdCoreModule } from '@angular2-material/core';
+import { MdIconModule, MdIconRegistry } from '@angular/material';
 import { MdButtonModule } from '@angular2-material/button';
 import { MdCardModule } from '@angular2-material/card';
+import { MdCoreModule } from '@angular2-material/core';
+import { MdListModule } from '@angular2-material/list';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 // import { MdRadioModule } from '@angular2-material/radio';
 // import { MdCheckboxModule } from '@angular2-material/checkbox'
 // import { MdTooltipModule } from '@angular2-material/tooltip';
 // import { MdSliderModule } from '@angular2-material/slider';
+// import '@angular2-material/grid-list';
+// import '@angular2-material/input';
+// import '@angular2-material/progress-bar';
+// import '@angular2-material/progress-circle';
+// import '@angular2-material/slide-toggle';
+// import '@angular2-material/tabs';
+import 'hammerjs';
 
 import {
   NgModule,
@@ -80,11 +89,13 @@ type StoreType = {
     FormsModule,
     HttpModule,
     // MaterialModule.forRoot(),
+    MdIconModule.forRoot(),
     MdCoreModule.forRoot(),
     MdCardModule.forRoot(),
     MdButtonModule.forRoot(),
     MdSidenavModule.forRoot(),
     MdToolbarModule.forRoot(),
+    MdListModule.forRoot(),
     // MdRadioModule,
     // MdCheckboxModule,
     // MdTooltipModule,
@@ -94,7 +105,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    MdIconRegistry
   ]
 })
 export class AppModule {
