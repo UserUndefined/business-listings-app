@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { MdIconModule, MdIconRegistry } from '@angular/material';
 import { MdButtonModule } from '@angular2-material/button';
 import { MdCardModule } from '@angular2-material/card';
-import { MdCoreModule } from '@angular2-material/core';
+// import { MdCoreModule } from '@angular2-material/core';
 import { MdListModule } from '@angular2-material/list';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdToolbarModule } from '@angular2-material/toolbar';
@@ -90,7 +90,7 @@ type StoreType = {
     HttpModule,
     // MaterialModule.forRoot(),
     MdIconModule.forRoot(),
-    MdCoreModule.forRoot(),
+    // MdCoreModule.forRoot(),
     MdCardModule.forRoot(),
     MdButtonModule.forRoot(),
     MdSidenavModule.forRoot(),
