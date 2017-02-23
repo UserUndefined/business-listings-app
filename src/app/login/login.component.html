@@ -1,0 +1,23 @@
+<section>
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+        <h1>User Login</h1>
+      </div>
+
+      <div class="login-form">
+        <div class="control-group">
+          <input type="text" class="login-field" value="{{user.username}}" placeholder="username" id="login-name" >
+          <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+        <div class="control-group">
+          <input type="password" class="login-field" value="{{user.password}}" placeholder="password" id="login-pass">
+          <label class="login-field-icon fui-lock" for="login-pass"></label>
+        </div>
+
+        <button md-raised-button color="primary" (click)="login(user)">Login</button>
+      </div>
+    </div>
+  </div>
+</section>

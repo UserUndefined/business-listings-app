@@ -51,6 +51,7 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { CustomerComponent } from './customer';
 import { DashboardComponent } from './dashboard';
+import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { SideNavBarComponent } from './sideNavBar';
@@ -80,6 +81,7 @@ type StoreType = {
     AboutComponent,
     CustomerComponent,
     DashboardComponent,
+    LoginComponent,
     HomeComponent,
     NoContentComponent,
     XLargeDirective,
