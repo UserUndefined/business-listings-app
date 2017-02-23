@@ -1,83 +1,76 @@
 <section class="card-dashboard" layout layout-wrap layout-align="center">
   <md-card>
-    <div class="card-dashboard--img">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-    </div>
+    <img [src]="developmentsLogo" width="25%" alt="Developments">
     <md-card-title>
       <span class="md-headline">Developments</span>
     </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button ng-href="#/developments">Developments</button>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="redirect('home')">Developments</button>
     </md-card-actions>
   </md-card>
   <md-card>
-    <div class="card-dashboard--img">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-    </div>
+    <img [src]="newDevelopmentLogo" width="25%" alt="New Development">
     <md-card-title>
       <span class="md-headline">New Development</span>
     </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button ng-href="#/development">New Development</button>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="redirect('home')">New Development</button>
     </md-card-actions>
   </md-card>
   <md-card>
-    <div class="card-dashboard--img">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-    </div>
+    <img [src]="kpiDashboardLogo" width="25%" alt="KPI Dashboard">
     <md-card-title>
       <span class="md-headline">KPI Dashboard</span>
     </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button ng-href="https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1210336000000010275&STANDALONE=true&privatelink=604410cff4c6b6a457944526a07d34c7&INTERVAL=-1&REMTOOLBAR=true&INCLUDETITLE=false&INCLUDEDESC=false">KPI Dashboard</button>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="goKpiDashboardReport()">KPI Dashboard</button>
     </md-card-actions>
   </md-card>
   <md-card>
-    <div class="card-dashboard--img">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-    </div>
+    <img [src]="reportPriorityLogo" width="25%" alt="Priority Report">
     <md-card-title>
       <span class="md-headline">Daily Priority Report</span>
     </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button ng-href="https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1210336000000010568&STANDALONE=true&privatelink=424139fb7779020a2ba7df3f22a9cda2&INTERVAL=-1&REMTOOLBAR=true&INCLUDETITLE=true&INCLUDEDESC=false">Daily Priority Report</button>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="goPriorityReport()">Priority Report</button>
     </md-card-actions>
   </md-card>
   <md-card>
-    <div layout="row" layout-align="center center">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-      <!--nvd3 options="vm.visitorsChartOptions" data="vm.visitorsChartData"></nvd3-->
-    </div>
-    <md-card-title>
-      <span class="md-headline">Workflows Complete</span>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button md-raised-button color="primary">PRIMARY RAISED</button>
-      <button ng-href="https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1210336000000010568&STANDALONE=true&privatelink=424139fb7779020a2ba7df3f22a9cda2&INTERVAL=-1&REMTOOLBAR=true&INCLUDETITLE=true&INCLUDEDESC=false">Workflow</button>
+    <md-card-title>Workflows Complete</md-card-title>
+    <md-card-subtitle>Current Values</md-card-subtitle>
+    <ngx-charts-pie-chart class="md-card-image"
+                          [scheme]="chartWorkflowColorScheme"
+                          [results]="chartWorkflowData"
+                          [legend]="chartWorkflowShowLegend"
+                          [explodeSlices]="chartWorkflowExplodeSlices"
+                          [labels]="chartWorkflowShowLabels"
+                          [doughnut]="chartWorkflowDoughnut"
+                          [gradient]="chartWorkflowGradient"
+                          (select)="onChartWorkflowSelect($event)">
+    </ngx-charts-pie-chart>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="goWorkflowReport()">Workflow</button>
     </md-card-actions>
   </md-card>
   <md-card>
-    <div layout="row" layout-align="center center">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-      <!--nvd3 options="vm.warningsChartOptions" data="vm.warningsChartData"></nvd3-->
-    </div>
+    <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
     <md-card-title>
       <span class="md-headline">Monthly Revenue</span>
     </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button ng-href="https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1210336000000010568&STANDALONE=true&privatelink=424139fb7779020a2ba7df3f22a9cda2&INTERVAL=-1&REMTOOLBAR=true&INCLUDETITLE=true&INCLUDEDESC=false">Revenue</button>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="goRevenueReport()">Revenue</button>
     </md-card-actions>
   </md-card>
   <md-card>
-    <div layout="row" layout-align="center center">
-      <img ng-src="img/angular-logo.png" class="md-card-image" alt="Washed Out">
-      <!--nvd3 options="vm.memoryChartOptions" data="vm.memoryChartData"></nvd3-->
-    </div>
-    <md-card-title>
-      <span class="md-headline">Completed Developments</span>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <button ng-href="https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1210336000000010568&STANDALONE=true&privatelink=424139fb7779020a2ba7df3f22a9cda2&INTERVAL=-1&REMTOOLBAR=true&INCLUDETITLE=true&INCLUDEDESC=false">Developments</button>
+    <md-card-title>Completed Artifacts</md-card-title>
+    <md-card-subtitle>Current Products</md-card-subtitle>
+    <ngx-charts-number-card
+      [scheme]="chartNumberCardColorScheme"
+      [results]="chartNumberCardData"
+      (select)="chartNumberCardOnSelect($event)">
+    </ngx-charts-number-card>
+    <md-card-actions>
+      <button md-raised-button color="primary" (click)="goArtifactReport()">Artifacts</button>
     </md-card-actions>
   </md-card>
 </section>

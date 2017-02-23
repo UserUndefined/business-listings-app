@@ -22,6 +22,7 @@ import { MdToolbarModule } from '@angular2-material/toolbar';
 // import '@angular2-material/slide-toggle';
 // import '@angular2-material/tabs';
 import 'hammerjs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import {
   NgModule,
@@ -99,7 +100,8 @@ type StoreType = {
     // MdRadioModule,
     // MdCheckboxModule,
     // MdTooltipModule,
-    // MdSliderModule
+    // MdSliderModule,
+    NgxChartsModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules
     })
   ],
