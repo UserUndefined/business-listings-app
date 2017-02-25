@@ -55,6 +55,7 @@ import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { SideNavBarComponent } from './sideNavBar';
+import { UserService } from './services/user.service';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -110,7 +111,8 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    MdIconRegistry
+    MdIconRegistry,
+    UserService
   ]
 })
 export class AppModule {
