@@ -4,6 +4,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { AppState } from './app.service';
+import { UserService } from './services/user.service';
+import { CognitoUtil, LoggedInCallback } from './services/cognito.service';
 
 /*
  * App Component
@@ -22,9 +24,7 @@ export class AppComponent implements OnInit {
   public name = 'Business Listing Application';
   public url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState
-  ) {}
+  constructor(public appState: AppState, public cognito: CognitoUtil) {}
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);

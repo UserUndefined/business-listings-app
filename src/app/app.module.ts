@@ -56,6 +56,7 @@ import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { SideNavBarComponent } from './sideNavBar';
 import { UserService } from './services/user.service';
+import { UserParametersService, CognitoUtil } from './services/cognito.service';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -112,7 +113,8 @@ type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS,
     MdIconRegistry,
-    UserService
+    UserService,
+    CognitoUtil
   ]
 })
 export class AppModule {
