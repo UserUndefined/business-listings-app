@@ -26,6 +26,10 @@ export class CognitoUtil {
 // public static _USER_POOL_ID = environment.userPoolId;
 // public static _CLIENT_ID = environment.clientId;
 
+  public static _REGION = 'eu-west-1';
+  public static _IDENTITY_POOL_ID = '2d9fbafa-4753-41d8-8353-8b2f44675cf4';
+  public static _USER_POOL_ID = 'eu-west-1_5MHtkIKtT';
+  public static _CLIENT_ID = '2mg368usdh6ql5463cqtoratfp';
 
   public static _POOL_DATA = {
     UserPoolId: CognitoUtil._USER_POOL_ID,
@@ -53,7 +57,7 @@ export class CognitoUtil {
       throw('CognitoUtil: callback in getAccessToken is null...returning');
     }
     if (this.getCurrentUser() != null) {
-      this.getCurrentUser().getSession(function (err, session) {
+      this.getCurrentUser().getSession((err, session) => {
         if (err) {
           console.log('CognitoUtil: Cant set the credentials:' + err);
           callback.callbackWithParam(null);
@@ -73,7 +77,7 @@ export class CognitoUtil {
       throw('CognitoUtil: callback in getIdToken is null...returning');
     }
     if (this.getCurrentUser() != null) {
-      this.getCurrentUser().getSession(function (err, session) {
+      this.getCurrentUser().getSession((err, session) => {
         if (err) {
           console.log('CognitoUtil: Cant set the credentials:' + err);
           callback.callbackWithParam(null);
@@ -95,7 +99,7 @@ export class CognitoUtil {
       throw('CognitoUtil: callback in getRefreshToken is null...returning');
     }
     if (this.getCurrentUser() != null) {
-      this.getCurrentUser().getSession(function (err, session) {
+      this.getCurrentUser().getSession((err, session) => {
         if (err) {
           console.log('CognitoUtil: Can\'t set the credentials:' + err);
           callback.callbackWithParam(null);
@@ -111,7 +115,7 @@ export class CognitoUtil {
   }
 
   public refresh(): void {
-    this.getCurrentUser().getSession(function (err, session) {
+    this.getCurrentUser().getSession((err, session) => {
       if (err) {
         console.log('CognitoUtil: Can\'t set the credentials:' + err);
       } else {
@@ -122,34 +126,5 @@ export class CognitoUtil {
         }
       }
     });
-  }
-}
-
-@Injectable()
-export class UserParametersService {
-
-  constructor(public cognitoUtil: CognitoUtil) {
-  }
-
-  public getParameters(callback: Callback) {
-    let cognitoUser = this.cognitoUtil.getCurrentUser();
-
-    if (cognitoUser != null) {
-      cognitoUser.getSession(function (err, session) {
-        if (err) {
-          console.log('UserParametersService: Couldn\'t retrieve the user');
-        } else {
-          cognitoUser.getUserAttributes(function (err, result) {
-            if (err) {
-              console.log('UserParametersService: in getParameters: ' + err);
-            } else {
-              callback.callbackWithParam(result);
-            }
-          });
-        }
-      });
-    } else {
-      callback.callbackWithParam(null);
-    }
   }
 }

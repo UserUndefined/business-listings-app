@@ -3,13 +3,14 @@ import {
   OnInit
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService, LoggedInCallback } from '../services/user.service';
 
 @Component({
   selector: 'dashboard',
   styleUrls: ['./dashboard.component.css'],
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, LoggedInCallback {
   public developmentsLogo = 'assets/img/developments.png';
   public newDevelopmentLogo = 'assets/img/new-development.png';
   public kpiDashboardLogo = 'assets/img/kpi-dashboard.jpg';
@@ -34,7 +35,9 @@ export class DashboardComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C']
   };
 
-  constructor(private router: Router) { }
+  constructor(public router: Router, public userService: UserService) {
+    this.userService.isAuthenticated(this);
+  }
 
   public redirect(pagename: string) {
     this.router.navigate(['/' + pagename]);
@@ -112,4 +115,11 @@ export class DashboardComponent implements OnInit {
         value: 55
       }];
   }
+
+  public isLoggedIn(message: string, isLoggedIn: boolean) {
+    if (!isLoggedIn) {
+      this.router.navigate(['/login']);
+    }
+  }
+
 }
