@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService, LoggedInCallback } from '../services/user.service';
 
@@ -36,7 +33,6 @@ export class DashboardComponent implements OnInit, LoggedInCallback {
   };
 
   constructor(public router: Router, public userService: UserService) {
-    this.userService.isAuthenticated(this);
   }
 
   public redirect(pagename: string) {
@@ -87,6 +83,7 @@ export class DashboardComponent implements OnInit, LoggedInCallback {
   }
 
   public ngOnInit() {
+    this.userService.isAuthenticated(this);
     this.chartWorkflowData = [
       {
         name: 'Complete',
@@ -118,8 +115,7 @@ export class DashboardComponent implements OnInit, LoggedInCallback {
 
   public isLoggedIn(message: string, isLoggedIn: boolean) {
     if (!isLoggedIn) {
-      this.router.navigate(['/login']);
+      this.redirect('login');
     }
   }
-
 }

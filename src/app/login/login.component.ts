@@ -17,14 +17,21 @@ export class LoginComponent implements OnInit, LoginCallback, LoggedInCallback {
   }
 
   public ngOnInit() {
-    console.log('LoginComponent ngOnInit called');
     this.errorMessage = null;
-    console.log('Checking if the user is already authenticated.');
     this.userService.isAuthenticated(this);
   }
 
   public redirect(pagename: string) {
     this.router.navigate(['/' + pagename]);
+  }
+
+  public isLoggedIn(message: string, isLoggedIn: boolean) {
+    if (isLoggedIn) {
+      this.logout();
+      // console.log('user is already logged in. Off to the home page...');
+      // this.redirect('home');
+    }
+    console.log('user is not already logged in');
   }
 
   public loginCallback(message: string, result: any) {
@@ -54,14 +61,5 @@ export class LoginComponent implements OnInit, LoginCallback, LoggedInCallback {
 
   public logout() {
     this.userService.logout();
-  }
-
-  public isLoggedIn(message: string, isLoggedIn: boolean) {
-    if (isLoggedIn) {
-      this.logout();
-      // console.log('user is already logged in. Off to the home page...');
-      // this.redirect('home');
-    }
-    console.log('user is not already logged in');
   }
 }

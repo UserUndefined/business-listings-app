@@ -1,8 +1,6 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService, LoggedInCallback } from '../services/user.service';
 
 @Component({
   selector: 'about',
@@ -22,15 +20,15 @@ import { ActivatedRoute } from '@angular/router';
     <pre>this.localState = {{ localState | json }}</pre>
   `
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, LoggedInCallback {
 
   public localState: any;
-  constructor(
-    public route: ActivatedRoute
-  ) {}
+
+  constructor(public activatedRoute: ActivatedRoute, private router: Router, public userService: UserService) {}
 
   public ngOnInit() {
-    this.route
+    this.userService.isAuthenticated(this);
+    this.activatedRoute
       .data
       .subscribe((data: any) => {
         // your resolved data from route
@@ -44,6 +42,17 @@ export class AboutComponent implements OnInit {
     // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
     this.asyncDataWithWebpack();
   }
+
+  public redirect(pagename: string) {
+    this.router.navigate(['/' + pagename]);
+  }
+
+  public isLoggedIn(message: string, isLoggedIn: boolean) {
+    if (!isLoggedIn) {
+      this.redirect('login');
+    }
+  }
+
   private asyncDataWithWebpack() {
     // you can also async load mock data with 'es6-promise-loader'
     // you would do this if you don't want the mock-data bundled
