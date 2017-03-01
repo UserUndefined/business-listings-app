@@ -123,27 +123,56 @@ export class UserService {
       this.cognitoUtil.getCurrentUser().signOut();
     }
 
-    public isAuthenticated(callback: LoggedInCallback) {
-      console.log('checking authentication');
-      if (callback == null) {
-        throw('UserService: Callback in isAuthenticated() cannot be null');
-      }
+  public isAuthenticated(callback: LoggedInCallback) {
+    console.log('checking authentication');
+    if (callback == null) {
+      throw('UserService: Callback in isAuthenticated() cannot be null');
+    }
 
+    let cognitoUser = this.cognitoUtil.getCurrentUser();
+
+    if (cognitoUser != null) {
+      cognitoUser.getSession((err, session) => {
+        if (err) {
+          console.log('UserService: Couldn\'t get the session: ' + err, err.stack);
+          callback.isLoggedIn(err, false);
+        } else {
+          console.log('UserService: Session is ' + session.isValid());
+          callback.isLoggedIn(err, session.isValid());
+        }
+      });
+    } else {
+      console.log('UserService: can\'t retrieve the current user');
+      callback.isLoggedIn('Can\'t retrieve the CurrentUser', false);
+    }
+  }
+
+  public changePassword(oldPassword: string, newPassword: string): Promise<any> {
+    console.log('updating password');
+    return new Promise((resolve, reject) => {
       let cognitoUser = this.cognitoUtil.getCurrentUser();
-
       if (cognitoUser != null) {
-        cognitoUser.getSession((err, session) => {
-          if (err) {
-            console.log('UserService: Couldn\'t get the session: ' + err, err.stack);
-            callback.isLoggedIn(err, false);
+        cognitoUser.getSession((sessionErr, session) => {
+          if (sessionErr) {
+            console.log('getSession error');
+            reject('Couldn\t get user session');
           } else {
-            console.log('UserService: Session is ' + session.isValid());
-            callback.isLoggedIn(err, session.isValid());
+            console.log('got user session');
+            cognitoUser.changePassword(oldPassword, newPassword, (err, result) => {
+              if (err) {
+                console.log('changePassword error');
+                reject(err);
+              } else {
+                console.log('change password succeeded');
+                resolve(result);
+              }
+            });
           }
         });
       } else {
-        console.log('UserService: can\'t retrieve the current user');
-        callback.isLoggedIn('Can\'t retrieve the CurrentUser', false);
+        console.log('Could not get current user');
+        reject('Could not get current user');
       }
-    }
+    });
+  }
 }

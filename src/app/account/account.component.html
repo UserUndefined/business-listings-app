@@ -1,0 +1,30 @@
+<section>
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+        <h1>User Account</h1>
+      </div>
+
+      <div class="user-account-form">
+        <div class="control-group">
+          <input type="text" class="login-field" [(ngModel)]="user.attributes" id="user-attributes" >
+          <label class="fui-user" for="user-attributes"></label>
+        </div>
+
+        <button md-raised-button color="primary" (click)="getAttributes()">Get Attributes</button>
+
+        <div class="control-group">
+          <input type="password" class="login-field" [(ngModel)]="user.oldPassword" id="user-old-password" >
+          <label class="fui-user" for="user-old-password"></label>
+        </div>
+        <div class="control-group">
+          <input type="password" class="login-field" [(ngModel)]="user.newPassword" id="user-new-password" >
+          <label class="fui-user" for="user-new-password"></label>
+        </div>
+        <button md-raised-button color="primary" (click)="changePassword()">Change password</button>
+
+        <p><span>Error Messages: {{errorMessage}}</span></p>
+      </div>
+    </div>
+  </div>
+</section>

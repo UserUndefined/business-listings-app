@@ -16,25 +16,32 @@ export class UserParametersService {
   constructor(public cognitoUtil: CognitoUtil) {
   }
 
-  public getParameters(callback: Callback) {
-    let cognitoUser = this.cognitoUtil.getCurrentUser();
-
-    if (cognitoUser != null) {
-      cognitoUser.getSession((err, session) => {
-        if (err) {
-          console.log('UserParametersService: Couldn\'t retrieve the user');
-        } else {
-          cognitoUser.getUserAttributes((attErr, result) => {
-            if (attErr) {
-              console.log('UserParametersService: in getParameters: ' + attErr);
-            } else {
-              callback.callbackWithParam(result);
-            }
-          });
-        }
-      });
-    } else {
-      callback.callbackWithParam(null);
-    }
+  public getParameters(): Promise<any> {
+    console.log('getting user attributes');
+    return new Promise((resolve, reject) => {
+      let cognitoUser = this.cognitoUtil.getCurrentUser();
+      if (cognitoUser != null) {
+        cognitoUser.getSession((err, session) => {
+          if (err) {
+            console.log('UserParametersService: Couldn\'t retrieve the user');
+            reject('UserParametersService: Couldn\'t retrieve the user');
+          } else {
+            console.log('getting user attributes from cognitoUser');
+            cognitoUser.getUserAttributes((attErr, result) => {
+              if (attErr) {
+                console.log('UserParametersService: in getParameters: ' + attErr);
+                reject('UserParametersService: in getParameters: ' + attErr);
+              } else {
+                console.log('got user attributes');
+                resolve(JSON.stringify(result));
+              }
+            });
+          }
+        });
+      } else {
+        console.log('Could not get current user');
+        reject('Could not get current user');
+      }
+    });
   }
 }

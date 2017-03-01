@@ -30,6 +30,10 @@
          routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Dashboard
       </a>
+      <a [routerLink]=" ['./account'] " md-list-item
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Account
+      </a>
       <a [routerLink]=" ['./login'] " md-list-item
          routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Logout
@@ -74,6 +78,10 @@
     <a [routerLink]=" ['./dashboard'] "
        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
       Dashboard
+    </a>
+    <a [routerLink]=" ['./account'] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      Account
     </a>
     <a [routerLink]=" ['./login'] "
        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
